@@ -1,0 +1,3 @@
+## 1.0.0 - Initial Release (2015-02-27)
+
+* Added support for ...

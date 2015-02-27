@@ -1,0 +1,65 @@
+'name': 'Windows Registry'
+'scopeName': 'source.reg'
+'fileTypes': [
+  'reg'
+]
+'patterns': [
+  {
+    'name'  : 'comment'
+    'match' : ';.+$'
+  }
+  {
+    'name'  : 'hivename.keyword'
+    'match' : '(HKEY_(LOCAL_MACHINE|CURRENT_CONFIG|CLASSES_ROOT|CURRENT_USER|USERS|PERFORMANCE_DATA|DYN_DATA)|HKLM|HKCC|HKCR|HKCU|HKU)'
+  }
+  {
+    'captures' :
+      '1' :
+        'name' : 'constant.standard-key'
+    'match'    : '(HKEY_CURRENT_USER|HKCU)\\(AppEvents|AppXBackupContentType|Console|Control Panel|Environment|EUDC|Keyboard Layout|Network|Printers|Software|System|Volatile Environment)'
+  }
+  {
+    'captures' :
+      '1' :
+        'name' : 'constant.standard-key'
+    'match'    : '(HKEY_LOCAL_MACHINE|HKLM)\\(BCD00000000|DRIVERS|HARDWARE|SAM|SECURITY|SOFTWARE|SYSTEM)'
+  }
+  {
+    'captures' :
+      '1' :
+        'name' : 'constant.standard-key'
+      '2' :
+        'name' : 'constant.standard-key'
+    'match'    : '(HKEY_USERS|HKU)\\(.DEFAULT)\\(AppEvents|AppXBackupContentType|Console|Control Panel|Environment|EUDC|Keyboard Layout|Network|Printers|Software|System|Volatile Environment)'
+  }
+  {
+    'captures' :
+      '1' :
+        'name' : 'constant.standard-key'
+    'match'    : '(HKEY_CURRENT_CONFIG|HKCC)\\(Software|System)'
+  }
+  {
+    'name'  : 'keyword'
+    'match' : '@='
+  }
+  {
+    'name'  : 'string'
+    'match' : '\\".*\\"'
+  }
+  {
+    'name'  : 'type'
+    'match' : '(hex(|\\(\\w\\))|dword):'
+  }
+  {
+    'name'  : 'keypath'
+    'match' : '\\[(HKEY_(LOCAL_MACHINE|CURRENT_CONFIG|CLASSES_ROOT|CURRENT_USER|USERS|PERFORMANCE_DATA|DYN_DATA)|HKLM|HKCC|HKCR|HKCU|HKU)(\\\\.*)*?\\]'
+  }
+  {
+    'name'  : 'meta.brace.square'
+    'match' : '(\\[|\\])'
+  }
+  {
+    'name'  : 'numeric'
+    'match' : '\\d+'
+  }
+]

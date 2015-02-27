@@ -1,0 +1,56 @@
+Windows Registry Editor Version 5.00
+
+
+; Comment Comment Comment
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Key\Add] ; Comment Comment Comment
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Key\Remove] ; Comment Comment Comment
+
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Values\Add]
+"Value A"="<String value data with escape characters>" ; Comment Comment Comment
+"Value B"=hex:<Binary data (as comma-delimited list of hexadecimal values)> ; Comment Comment Comment
+"Value C"=dword:00000001 ; Comment Comment Comment
+"Value D"=hex(0):<REG_NONE (as comma-delimited list of hexadecimal values)> ; Comment Comment Comment
+"Value E"=hex(1):<REG_SZ (as comma-delimited list of hexadecimal values representing a UTF-16LE NUL-terminated string)>
+"Value F"=hex(2):<Expandable string value data (as comma-delimited list of hexadecimal values representing a UTF-16LE NUL-terminated string)>
+"Value G"=hex(3):<Binary data (as comma-delimited list of hexadecimal values)> ; equal to "Value B"
+"Value H"=hex(4):<DWORD value (as comma-delimited list of 4 hexadecimal values, in little endian byte order)>
+"Value I"=hex(5):<DWORD value (as comma-delimited list of 4 hexadecimal values, in big endian byte order)>
+"Value J"=hex(7):<Multi-string value data (as comma-delimited list of hexadecimal values representing UTF-16LE NUL-terminated strings)>
+"Value K"=hex(8):<REG_RESOURCE_LIST (as comma-delimited list of hexadecimal values)>
+"Value L"=hex(a):<REG_RESOURCE_REQUIREMENTS_LIST (as comma-delimited list of hexadecimal values)>
+"Value M"=hex(b):<QWORD value (as comma-delimited list of 8 hexadecimal values, in little endian byte order)>
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Values\Add\Default]
+@=<Value type>:<Value data> ; Comment Comment Comment
+
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Values\Remove]
+"Value A"=- ; Comment Comment Comment
+"Value B"=-
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Values\Remove\Default]
+@=- ; Comment Comment Comment
+
+
+
+[HKEY_LOCAL_MACHINE]
+[HKLM]
+
+[HKEY_CURRENT_CONFIG]
+[HKCC]
+
+[HKEY_CLASSES_ROOT]
+[HKCR]
+
+[HKEY_CURRENT_USER]
+[HKCU]
+
+[HKEY_USERS]
+[HKU]
+
+[HKEY_PERFORMANCE_DATA]
+
+[HKEY_DYN_DATA]
