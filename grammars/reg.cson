@@ -1,95 +1,124 @@
-'name': 'REG (Windows Registry)'
+'name': "REG (Windows Registry)"
 'scopeName': 'source.reg'
 'fileTypes': [
   'reg'
 ]
 'patterns': [
   {
-    'name'  : 'comment'
-    'match' : ';.*$'
+    'name': 'comment.reg'
+    'match': ';.*$'
+  }
+    {
+      'name': 'meta.doctype.reg'
+      'match': 'Windows Registry Editor Version \\d.\\d\\d'
+    }
+  {
+    'name': 'keyword.reg'
+    'captures':
+      '2':
+        'name': 'keyword.reg'
+      '3':
+        'name': 'punctuation.separator.key-value.reg'
+      '5':
+        'name': 'keyword.operator.reg'
+    'match': '(^(@)|[^=]+)(=)(|(\\-))'
   }
   {
-    'name'  : 'constant.character.escape'
-    'match' : '\\\\\\\\'
+    'captures':
+      '1':
+        'name': 'keyword.reg'
+    'match': '(\\\\)$'
   }
   {
-    'name'  : 'string'
-    'match' : '\\"[^\\"]*\\"'
+    'name': '.string.quoted.double.reg'
+
+    'begin': '\\"'
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.definition.string.begin.reg'
+
+    'end': '\\"'
+    'endCaptures':
+      '0':
+        'name': 'punctuation.definition.string.end.reg'
+
+    'patterns': [
+      {
+        'name': 'constant.character.escape.reg'
+        'match': '\\\\\\\\'
+      }
+    ]
   }
   {
-    'name'  : 'keyword'
-    'match' : '@='
+    'captures':
+      '1':
+        'name': 'storage.type.reg'
+      '3':
+        'name': 'constant.numeric.reg'
+      '4':
+        'name': 'keyword.operator.reg'
+    'match': '(hex)(|\\(([ABab0-9])\\))(:)'
   }
   {
-    'captures' :
-      '0' :
-        'name' : 'keyword'
-    'match'    : '(\\\\)$'
+    'captures':
+      '1':
+        'name': 'storage.type.reg'
+      '2':
+        'name': 'keyword.operator.reg'
+      '3':
+        'name': 'constant.numeric.reg'
+    'match': '(dword)(:)([ABCDEFabcdef0-9]{1,8})\\s*$'
   }
   {
-    'name'  : 'meta.brace.square'
-    'match' : '(\\[|\\])'
+    'captures':
+      '1':
+        'name': 'language.constant.boolean.reg'
+    'match': '=\\s*(0|1)\\s*$'
   }
   {
-    'captures' :
-      '1' :
-        'name' : 'storage.type'
-      '3' :
-        'name' : 'numeric'
-      '0' :
-        'name' : 'keyword.operator'
-    'match'    : '(hex(|\\(([ABab0-9])\\))|dword)(:)'
-  }
-  {
-    'captures' :
-      '1' :
-        'name' : 'numeric'
-    'match'    : 'dword:(\\d{1,8})'
-  }
-  {
-    'captures' :
-      '0' :
-        'name' : 'keyword.hivename'
-      '1' :
-        'name' : 'constant.standard-key'
-    'match'    : '\\[(HKEY_CURRENT_USER|HKCU)\\\\(AppEvents|AppXBackupContentType|Console|Control Panel|Environment|EUDC|Keyboard Layout|Network|Printers|Software|System|Volatile Environment).*?\\]'
-  }
-  {
-    'captures' :
-      '0' :
-        'name' : 'keyword.hivename'
-      '1' :
-        'name' : 'constant.standard-key'
-    'match'    : '\\[(HKEY_LOCAL_MACHINE|HKLM)\\\\(BCD00000000|DRIVERS|HARDWARE|SAM|SECURITY|SOFTWARE|SYSTEM).*?\\]'
-  }
-  {
-    'captures' :
-      '0' :
-        'name' : 'keyword.hivename'
-      '1' :
-        'name' : 'language.constant.standard-key'
-      '2' :
-        'name' : 'constant.standard-key'
-    'match'    : '\\[(HKEY_USERS|HKU)\\\\(.DEFAULT)\\\\(AppEvents|AppXBackupContentType|Console|Control Panel|Environment|EUDC|Keyboard Layout|Network|Printers|Software|System|Volatile Environment).*?\\]'
-  }
-  {
-    'captures' :
-      '0' :
-        'name' : 'keyword.hivename'
-      '1' :
-        'name' : 'language.constant.standard-key'
-    'match'    : '\\[(HKEY_CURRENT_CONFIG|HKCC)\\\\(Software|System).*?\\]'
-  }
-  {
-    'captures' :
-      '0' :
-        'name' : 'keyword.hivename'
-    'match'    : '\\[(HKEY_(LOCAL_MACHINE|CURRENT_CONFIG|CLASSES_ROOT|CURRENT_USER|USERS|PERFORMANCE_DATA|DYN_DATA)|HKLM|HKCC|HKCR|HKCU|HKU)'
-  }
-  {
-    'captures' :
-      '1' :
-        'name' : 'string.constant.keypath'
-    'match'    : '\\[(|-)((HKEY_(LOCAL_MACHINE|CURRENT_CONFIG|CLASSES_ROOT|CURRENT_USER|USERS|PERFORMANCE_DATA|DYN_DATA)|HKLM|HKCC|HKCR|HKCU|HKU)(\\\\.*?)*?)\\]'
+    'name': '.meta.section.key-path.reg'
+
+    'begin': '\\['
+    'beginCaptures':
+      '0':
+        'name': 'meta.brace.square.reg'
+
+    'end': '\\]'
+    'endCaptures':
+      '0':
+        'name': 'meta.brace.square.reg'
+
+    'patterns': [
+      {
+        'captures':
+          '2':
+            'name': 'language.constant.standard-key.reg'
+        'match': '(HKEY_CURRENT_CONFIG|HKCC)\\\\(Software|System)'
+      }
+      {
+        'captures':
+          '2':
+            'name': 'language.constant.standard-key.reg'
+        'match': '(HKEY_CURRENT_USER|HKCU)\\\\(AppEvents|AppXBackupContentType|Console|Control Panel|Environment|EUDC|Keyboard Layout|Network|Printers|Software|System|Volatile Environment)'
+      }
+      {
+        'captures':
+          '2':
+            'name': 'language.constant.standard-key.reg'
+        'match': '(HKEY_LOCAL_MACHINE|HKLM)\\\\(BCD00000000|DRIVERS|HARDWARE|SAM|SECURITY|SOFTWARE|SYSTEM)'
+      }
+      {
+        'captures':
+          '2':
+            'name': 'language.constant.standard-key.reg'
+          '3':
+            'name': 'language.constant.standard-key.reg'
+        'match': '(HKEY_USERS|HKU)\\\\(.DEFAULT)\\\\(AppEvents|AppXBackupContentType|Console|Control Panel|Environment|EUDC|Keyboard Layout|Network|Printers|Software|System|Volatile Environment)'
+      }
+      {
+        'name': 'keyword.other.hive-name.reg'
+        'match': '\\s*(HKEY_LOCAL_MACHINE|HKEY_CURRENT_CONFIG|HKEY_CLASSES_ROOT|HKEY_CURRENT_USER|HKEY_USERS|HKEY_PERFORMANCE_DATA|HKEY_DYN_DATA|HKLM|HKCC|HKCR|HKCU|HKU)'
+      }
+    ]
   }
 ]
