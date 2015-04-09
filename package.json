@@ -1,11 +1,16 @@
 {
   "name": "language-reg",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "Syntax highlighting for Windows registry files in Atom",
-  "repository": "https://github.com/bsara/language-reg.git",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bsara/language-reg.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bsara/language-reg/issues"
+  },
   "license": "MIT",
   "engines": {
     "atom": ">0.50.0"
-  },
-  "dependencies": {}
+  }
 }
