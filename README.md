@@ -3,6 +3,9 @@ Syntax Highlighting for Windows registry Files in Atom
 
 [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/bsara/language-reg/blob/master/LICENSE.md)
 
+[![Latest Version](https://img.shields.io/apm/v/language-reg.svg)](https://atom.io/packages/language-reg)
+[![Total Downloads](https://img.shields.io/apm/dm/language-reg.svg)](https://atom.io/packages/language-reg)
+
 
 Adds syntax highlighting to Windows registry files in Atom.
 
